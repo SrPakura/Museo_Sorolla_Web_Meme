@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En construcción... o algo así | Museo Sorolla</title>
+    
+    <!-- Fuentes originales del Museo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Empezamos el sufrimiento de nuevo... --- */
+        /* --- ESTILOS (Design Tokens originales) --- */
+        :root {
+            --c-arena: #FAF7F0;
+            --c-azul: #123057;
+            --c-dorado: #D9A869;
+            --c-blanco: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--c-arena);
+            font-family: 'Lato', sans-serif;
+            color: var(--c-azul);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Título Principal */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        /* Imagen del Meme */
+        .meme-container {
+            margin-bottom: 40px;
+            max-width: 600px; 
+            width: 100%;
+        }
+
+        .meme-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(18, 48, 87, 0.15);
+            /* Sin filtros, para que se vea el meme original */
+        }
+
+        /* Botón de Queja */
+        .btn-queja {
+            background-color: var(--c-azul);
+            color: var(--c-blanco);
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 15px 35px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(18, 48, 87, 0.2);
+        }
+
+        .btn-queja:hover {
+            background-color: var(--c-dorado);
+            transform: translateY(-2px);
+        }
+
+        .btn-queja:active {
+            transform: translateY(1px);
+        }
+
+        /* Mensaje Oculto (El punchline) */
+        #mensaje-oculto {
+            margin-top: 30px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 28px;
+            color: var(--c-dorado);
+            
+            /* Estado inicial: invisible */
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        /* Estado visible */
+        #mensaje-oculto.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Enlace para volver (opcional) */
+        .volver {
+            margin-top: 50px;
+            color: var(--c-azul);
+            text-decoration: underline;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+        .volver:hover { opacity: 1; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Volvemos a lo fácil... VAMOOOOOOO -->
+
+    <!-- 1. EL TEXTO -->
+    <h1>El vago del desarrollador no continuó la página</h1>
+
+    <!-- 2. LA IMAGEN -->
+    <div class="meme-container">
+        <img src="https://media.discordapp.net/attachments/1091673179895898203/1442191330670547084/meme.png?ex=692488d7&is=69233757&hm=64a7d85e98293e810b0117ffbd91c0ebf69605f9a2d50302a336dda8a7423b02&=&format=webp&quality=lossless" 
+             alt="Meme Developer" 
+             class="meme-img">
+    </div>
+
+    <!-- 3. EL BOTÓN -->
+    <button class="btn-queja" onclick="soltarBroma()">
+        Mándale un "con todo respeto"
+    </button>
+
+    <!-- 4. EL MENSAJE OCULTO -->
+    <p id="mensaje-oculto">Tampoco lo programó...</p>
+
+    <!-- Enlace discreto para volver al inicio -->
+    <a href="MuseoSorolla.html" class="volver">Volver a la portada</a>
+
+    <!-- LÓGICA (para bebes) -->
+    <script>
+        function soltarBroma() {
+            const mensaje = document.getElementById('mensaje-oculto');
+            const boton = document.querySelector('.btn-queja');
+            
+            // 1. Mostrar el texto oculto
+            mensaje.classList.add('visible');
+            
+            // 2. Cambiar estilo del botón para indicar que "ya se pulsó"
+            boton.textContent = "Mensaje ignorado con éxito";
+            boton.style.backgroundColor = "#888"; // Gris
+            boton.style.cursor = "default";
+            boton.disabled = true; // Desactivar para que no sigan clicando
+        }
+    </script>
+
+</body>
+</html>
